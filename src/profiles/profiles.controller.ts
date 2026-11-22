@@ -9,6 +9,7 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dot.js';
 import { UpdateProfileDto } from './dto/update-profile.dot.js';
@@ -24,7 +25,12 @@ export class ProfilesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.profilesService.findOne(id);
+    const matchingProfile = this.profilesService.findOne(id);
+
+    if (!matchingProfile) {
+      throw new NotFoundException(`Profile with ID: ${id} not found`);
+    }
+    return matchingProfile;
   }
 
   @Post()
@@ -34,13 +40,12 @@ export class ProfilesController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto) {
-    return {
-      id,
-      ...updateProfileDto,
-    };
+    return this.profilesService.update(id, updateProfileDto);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {}
+  remove(@Param('id') id: string) {
+    return this.profilesService.delete(id);
+  }
 }
