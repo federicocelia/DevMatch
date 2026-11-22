@@ -1,0 +1,92 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# NestJS cache
+.nestjs/
+
+# Coverage
+coverage/
+
+# Testing
+.junit.xml
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+
+## VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+## JetBrains
+.idea/
+*.iml
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Docker
+.docker/
+
+# PostgreSQL local data volumes
+postgres-data/
+
+# Drizzle ORM (keep migrations!)
+# Ignore generated artifacts only if you create them
+drizzle/meta/*.snapshot.json
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Package manager
+.npm
+.pnpm-store/
+.yarn/
+
+# Local SSL certificates
+certs/
+*.pem
+*.key
+*.crt
+
+# Render
+.render/
+
+# Vercel
+.vercel/
+
+# Misc
+*.swp
+*.swo
