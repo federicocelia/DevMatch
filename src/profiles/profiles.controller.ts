@@ -24,15 +24,12 @@ export class ProfilesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return { id };
+    return this.profilesService.findOne(id);
   }
 
   @Post()
   create(@Body() createProfileDto: CreateProfileDto) {
-    return {
-      name: createProfileDto.name,
-      description: createProfileDto.description,
-    };
+    return this.profilesService.create(createProfileDto);
   }
 
   @Put(':id')
