@@ -12,12 +12,14 @@ import {
 } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dot.js';
 import { UpdateProfileDto } from './dto/update-profile.dot.js';
+import { ProfilesService } from './profiles.service.js';
 
 @Controller('profiles')
 export class ProfilesController {
+  constructor(private profilesService: ProfilesService) {}
   @Get()
-  findAll(@Query('age') age: number) {
-    return [{ age }];
+  findAll() {
+    return this.profilesService.findAll();
   }
 
   @Get(':id')
