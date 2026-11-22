@@ -1,4 +1,15 @@
-import { Controller, Get, Query, Param, Post, Body, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  Param,
+  Post,
+  Body,
+  Put,
+  Delete,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dot.js';
 import { UpdateProfileDto } from './dto/update-profile.dot.js';
 
@@ -29,4 +40,8 @@ export class ProfilesController {
       ...updateProfileDto,
     };
   }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id') id: string) {}
 }
